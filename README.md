@@ -1,3 +1,8 @@
+//Cosas para recordad
+
+En este proyecto e implementado la carpeta environments con los environment.ts y environment.pord.ts, hemos modificado tambien el algular.json para que sean capaces de leerlo
+
+//Comandos
 # JuegoAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
