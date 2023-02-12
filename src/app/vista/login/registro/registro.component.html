@@ -1,0 +1,20 @@
+<div id="contenedor">
+  <div id="contenedor-registro">
+    <h1 id="titulo-registro">Registro</h1>
+    <br>
+    <form (ngSubmit)="registro()" #registroForm="ngForm">
+      <label>Correo:</label>
+      <br>
+      <input type="text" [(ngModel)]="usuario.correo" #correo="ngModel" id="usuario-registro" name="usuario-registro" placeholder="Indica tu correo" required>
+      <br>
+      <label>Contraseña:</label>
+      <br>
+      <input type="password" [(ngModel)]="usuario.contra" #contra="ngModel" id="contra-registro" name="contra-registro" required>
+      <br>
+      <div id="contenedor-botones">
+        <button type="submit" [disabled]="!registroForm.form.valid" id="registrarme">Registrar</button>
+        <button id="iniciar" routerLink="../login">Iniciar Sesion</button>
+      </div>
+    </form>
+  </div>
+</div>

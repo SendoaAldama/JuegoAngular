@@ -1,0 +1,20 @@
+<div id="contenedor">
+  <div id="contenedor-inicio">
+    <h1 id="titulo-inicio">Inicio de Sesión</h1>
+    <br>
+    <form (ngSubmit)="sesion()" #usuarioForm="ngForm">
+      <label>Correo:</label>
+      <br>
+      <input type="text" name="usuario-inicio" [(ngModel)]="usuario.correo" #correo="ngModel" id="usuario-inicio" placeholder="Indica tu correo" required>
+      <br>
+      <label>Contraseña:</label>
+      <br>
+      <input type="password" name="contra-inicio" [(ngModel)]="usuario.contra" #contra="ngModel" id="contra-inicio" required>
+      <br>
+      <div id="contenedor-botones">
+        <button type="submit" [disabled]="!usuarioForm.form.valid">Iniciar Sesion</button>
+        <button id="registrar" routerLink="../registro">Registrarme</button>
+      </div>
+    </form>
+  </div>
+</div>
