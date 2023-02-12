@@ -8,6 +8,9 @@ import { TableroComponent } from './vista/login/tablero/tablero.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PaginaNoEncontradaComponent } from './vista/pagina-no-encontrada/pagina-no-encontrada.component';
 import { FormsModule } from '@angular/forms';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegistroComponent,
     TableroComponent,
-    PaginaNoEncontradaComponent
+    PaginaNoEncontradaComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
   ],
   providers: [],
   bootstrap: [AppComponent]

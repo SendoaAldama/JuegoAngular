@@ -1,7 +1,7 @@
+import { UserService } from './../../../compartir/servicios/user.service';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Usuario } from 'src/app/compartir/clases/usuario';
-import { RegistroService } from 'src/app/compartir/servicios/registro.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -12,7 +12,7 @@ export class RegistroComponent {
 
   public usuario: Usuario;
 
-  constructor(private registroService: RegistroService, private router: Router)
+  constructor(private router: Router, private userService: UserService)
   {
 
     this.usuario = new Usuario();
@@ -21,20 +21,25 @@ export class RegistroComponent {
 
   public registro(): void {
 
-    this.registroService.registro(this.usuario).subscribe(
-      (data: number) => {
+      this.userService.register(this.usuario)
+      .then(() =>
+      {
 
-        localStorage.setItem('correo', this.usuario.correo);
-        localStorage.setItem('contra', this.usuario.contra);
-        localStorage.setItem('miTokenPersonal',`${ data }`);
+          this.router.navigate(['/login']);
+          alert("Usuario registrado");
 
-        this.router.navigate(['/login']);
+      })
+      .catch((err) =>
+      {
 
-      },
-      (error: Error) => {
-        console.error("Error al realizar el acceso");
-      }
-    )
+          console.log("Error al registrarse", err);
+          alert("El correo ya esta registrado");
+
+          this.usuario.correo = "";
+          this.usuario.contra = "";
+
+      });
+
   }
 
 }

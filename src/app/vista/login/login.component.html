@@ -5,11 +5,11 @@
     <form (ngSubmit)="sesion()" #usuarioForm="ngForm">
       <label>Correo:</label>
       <br>
-      <input type="text" name="usuario-inicio" [(ngModel)]="usuario.correo" #correo="ngModel" id="usuario-inicio" placeholder="Indica tu correo" required>
+      <input type="email" name="usuario-inicio" [(ngModel)]="usuario.correo" #correo="ngModel" id="usuario-inicio" placeholder="Indica tu correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
       <br>
       <label>Contraseña:</label>
       <br>
-      <input type="password" name="contra-inicio" [(ngModel)]="usuario.contra" #contra="ngModel" id="contra-inicio" required>
+      <input type="password" name="contra-inicio" [(ngModel)]="usuario.contra" #contra="ngModel" id="contra-inicio" required minlength="6">
       <br>
       <div id="contenedor-botones">
         <button type="submit" [disabled]="!usuarioForm.form.valid">Iniciar Sesion</button>

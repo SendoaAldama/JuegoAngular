@@ -5,11 +5,11 @@
     <form (ngSubmit)="registro()" #registroForm="ngForm">
       <label>Correo:</label>
       <br>
-      <input type="text" [(ngModel)]="usuario.correo" #correo="ngModel" id="usuario-registro" name="usuario-registro" placeholder="Indica tu correo" required>
+      <input type="email" [(ngModel)]="usuario.correo" #correo="ngModel" id="usuario-registro" name="usuario-registro" placeholder="Indica tu correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
       <br>
       <label>Contraseña:</label>
       <br>
-      <input type="password" [(ngModel)]="usuario.contra" #contra="ngModel" id="contra-registro" name="contra-registro" required>
+      <input type="password" [(ngModel)]="usuario.contra" #contra="ngModel" id="contra-registro" name="contra-registro" required minlength="6">
       <br>
       <div id="contenedor-botones">
         <button type="submit" [disabled]="!registroForm.form.valid" id="registrarme">Registrar</button>

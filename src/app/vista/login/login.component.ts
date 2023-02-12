@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/compartir/clases/usuario';
+import { UserService } from 'src/app/compartir/servicios/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent {
 
   public usuario: Usuario;
 
-  constructor(private router: Router)
+  constructor(private router: Router, private userService: UserService)
   {
 
     this.usuario = new Usuario();
@@ -21,12 +22,24 @@ export class LoginComponent {
   public sesion()
   {
 
-    if(this.usuario.correo == localStorage.getItem("correo") && this.usuario.contra == localStorage.getItem("contra"))
+    this.userService.inicio(this.usuario)
+    .then(() =>
     {
 
-      this.router.navigate(['/tablero']);
+        alert("Bienvenido al tablero");
+        this.router.navigate(['/tablero']);
 
-    }
+    })
+    .catch((err) =>
+    {
+
+        alert("El correo o la contraseña son erroneas");
+        console.log("Error al iniciar sesion", err);
+
+        this.usuario.correo = "";
+        this.usuario.contra = "";
+
+    });
 
   }
 
