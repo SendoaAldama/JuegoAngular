@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sendoajuego": {
+      "hosting": {
+        "JuegoAngular": [
+          "sendoajuego"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sendoajuego"
+  }
+}
